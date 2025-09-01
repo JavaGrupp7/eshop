@@ -5,17 +5,23 @@ import { Nav } from "./components/Nav";
 import { HomePage } from "./pages/HomePage";
 import { ShopPage } from "./pages/ShopPage";
 import { ProductPage } from "./pages/ProductPage";
+import { CartPage } from "./pages/CartPage";
 
 // Konstanter för att skilja på sidor och enkelt hantera dem
 export const HOME_PAGE = "home";
 export const SHOP_PAGE = "shop";
 export const PRODUCT_PAGE = "product";
+export const CART_PAGE = "cart";
 
 function App() {
   // En state för att hålla koll på vilken sida som är "aktiv" (manuell routing)
   const [page, setPage] = useState(SHOP_PAGE);
   // En state för att hålla koll på sido-specifik relevant data (som e.g. vilken produkt vi har tryckt på (id))
   const [pageData, setPageData] = useState(null);
+
+  // cart
+  const [cart, setCart] = useState([]);
+
 
   // En funktion för att ändra aktiv sida
   const changePage = (page) => {
@@ -48,9 +54,19 @@ function App() {
         changePage={changePage}
         pageData={pageData}
         setPageData={setPageData}
+        cart={cart}
+        setCart={setCart}
       />
     );
-  }
+  } else if (page === CART_PAGE) {
+    content = (
+      <CartPage
+        changePage={changePage}
+        cart={cart}
+        setCart={setCart}
+      />
+    );
+  } 
 
   return (
     <div id="app">
