@@ -38,12 +38,12 @@ export function ProductPage({ pageData, cart, setCart }) {
     console.log(cart);
 
     const cartItem = {
-      product: {product},
-      tagSelect: {tagSelect},
-      color: {colorSelect}
+      product: product,
+      tagSelect: tagSelect,
+      color: colorSelect
     }
 
-    if (cart == undefined) {
+    if (cart == undefined) {  
       let newCart = [];
       newCart.push(cartItem);
 
